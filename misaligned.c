@@ -7,7 +7,7 @@ const char* MinorColorNames[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
 int numberOfMajorColors = sizeof(MajorColorNames) / sizeof(MajorColorNames[0]);
 int numberOfMinorColors = sizeof(MinorColorNames) / sizeof(MinorColorNames[0]);
 
-void DisplayOnConsole(int Index, char* MajorColor, char* MinorColor)
+void DisplayOnConsole(int Index, const char* MajorColor, const char* MinorColor)
     { 
         assert( MajorColorNames[Index / numberOfMajorColors] == MajorColor);
         assert( MinorColorNames[Index % numberOfMinorColors] == MinorColor);
