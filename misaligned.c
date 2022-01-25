@@ -22,7 +22,7 @@ int printColorMap()
     {
         for(j = 0; j < 5; j++) 
         {
-            DisplayOnconsole(i * 5 + j , MajorColorNames[i] ,  MinorColorNames[i]);
+            DisplayOnConsole(i * 5 + j , MajorColorNames[i] ,  MinorColorNames[i]);
         }
     }
     return i * j;
