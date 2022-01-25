@@ -6,7 +6,7 @@ int alertFailureCount = 0;
 int networkAlertStub(float celcius) 
 {
     printf("ALERT: Temperature is %.1f celcius.\n", celcius);
-    if(celsius < 200.0f) 
+    if(celcius < 200.0f) 
     {
         return 200;     // Return 200 for ok
     }
@@ -14,14 +14,14 @@ int networkAlertStub(float celcius)
         return 500;    // Return 500 for ok
 }
 
-float ConvertFarenheitToCelsius(float farenheit)  
+float ConvertFarenheitToCelcius(float farenheit)  
 {
 	return (farenheit - 32) * 5 / 9;
 }
 
 void alertInCelcius(float farenheit, int (*ToNetworkAlertStub)(float))
 {
-    float celcius = ConvertFarenheitToCelsius(farenheit);
+    float celcius = ConvertFarenheitToCelcius(farenheit);
     int returnCode = ToNetworkAlertStub(celcius);
     if (returnCode != 200) {
         // non-ok response is not an error! Issues happen in life!
