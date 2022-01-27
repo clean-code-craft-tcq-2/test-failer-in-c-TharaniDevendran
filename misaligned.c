@@ -7,22 +7,32 @@ const char* MinorColorNames[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
 int numberOfMajorColors = sizeof(MajorColorNames) / sizeof(MajorColorNames[0]);
 int numberOfMinorColors = sizeof(MinorColorNames) / sizeof(MinorColorNames[0]);
 
-void DisplayOnConsole(int Index, const char* MajorColor, const char* MinorColor)
-    { 
-        assert( MajorColorNames[Index / numberOfMajorColors] == MajorColor);
-        assert( MinorColorNames[Index % numberOfMinorColors] == MinorColor);
-     
-        printf("%d | %s | %s\n", Index , MajorColor, MinorColor);  
-    }
+typedef struct {
+    const char* majorColor;
+    const char* minorColor;
+} ColorPair;
 
-int printColorMap() 
-{
+ColorPair GetColorFromPairNumber(int pairNumber) {
+    ColorPair colorPair;
+    colorPair.majorColor = MajorColorNames[(pairNumber / numberOfMinorColors)];
+    colorPair.minorColor = MinorColorNames[(pairNumber % numberOfMinorColors)];
+    return colorPair;
+}
+
+void VerifyNumberToPair(int pairNumber, const char* expectedMajor, const char* expectedMinor){
+    ColorPair colorPair = GetColorFromPairNumber(pairNumber);
+    assert(colorPair.majorColor == expectedMajor);
+    assert(colorPair.minorColor == expectedMinor);
+}
+
+int printColorMap() {
+    const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
+    const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
     int i = 0, j = 0;
-    for(i = 0; i < 5; i++) 
-    {
-        for(j = 0; j < 5; j++) 
-        {
-            DisplayOnConsole(i * 5 + j , MajorColorNames[i] ,  MinorColorNames[i]);
+    for(i = 0; i < 5; i++) {
+        for(j = 0; j < 5; j++) {
+            printf("%d | %s | %s\n", i * 5 + j, majorColor[i], minorColor[i]);
+            VerifyNumberToPair( i * 5 + j, majorColor[i], minorColor[i]);
         }
     }
     return i * j;
