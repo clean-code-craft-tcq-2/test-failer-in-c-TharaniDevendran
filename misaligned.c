@@ -35,7 +35,7 @@ int printColorMap()
     for(i = 0; i < 5; i++) 
     {
         for(j = 0; j < 5; j++) {
-            DisplayColor(i * 5 + j, majorColor[i], minorColor[j]);
+            formatColorPrinter(i * 5 + j, majorColor[i], minorColor[j]);
         }
     }
     return i * j;
