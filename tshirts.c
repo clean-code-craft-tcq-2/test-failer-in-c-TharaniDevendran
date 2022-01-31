@@ -21,7 +21,7 @@ char Shirtsize(int cms) {
     }
     return sizeName;
 }
-VerifyShirtSize(int size, char sizename)
+void VerifyShirtSize(int size, char sizename)
 {
     assert(Shirtsize(size) == sizename);
 }
