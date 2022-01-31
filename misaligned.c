@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <assert.h>
 
-const char* MajorColorNames[] = {"White", "Red", "Black", "Yellow", "Violet"};
-const char* MinorColorNames[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
+const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
+const char* majorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
 
-int numberOfMajorColors = sizeof(MajorColorNames) / sizeof(MajorColorNames[0]);
-int numberOfMinorColors = sizeof(MinorColorNames) / sizeof(MinorColorNames[0]);
+int numberOfMajorColors = sizeof(majorColor) / sizeof(majorColor[0]);
+int numberOfMinorColors = sizeof(majorColor) / sizeof(majorColor[0]);
 
 typedef struct {
     const char* majorColor;
@@ -25,14 +25,17 @@ void VerifyNumberToPair(int pairNumber, const char* expectedMajor, const char* e
     assert(colorPair.minorColor == expectedMinor);
 }
 
-int printColorMap() {
-    const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
-    const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
+void formatColorPrinter(int pairNumber, const char* MajorColor, const char* MinorColor)
+{
+    printf("%d | %s | %s\n", pairNumber, MajorColor, MinorColor);
+}
+int printColorMap() 
+{
     int i = 0, j = 0;
-    for(i = 0; i < 5; i++) {
+    for(i = 0; i < 5; i++) 
+    {
         for(j = 0; j < 5; j++) {
-            printf("%d | %s | %s\n", i * 5 + j, majorColor[i], minorColor[j]);
-            VerifyNumberToPair( i * 5 + j, majorColor[i], minorColor[j]);
+            DisplayColor(i * 5 + j, majorColor[i], minorColor[j]);
         }
     }
     return i * j;
@@ -41,6 +44,13 @@ int printColorMap() {
 int main() {
     int result = printColorMap();
     assert(result == 25);
+    for(int i = 0; i < 5; i++) 
+    {
+        for(int j = 0; j < 5; j++) 
+        {
+                       VerifyNumberToPair( i * 5 + j, majorColor[i], minorColor[j]);
+        }
+    }
     printf("All is well (maybe!)\n");
     return 0;
 }
