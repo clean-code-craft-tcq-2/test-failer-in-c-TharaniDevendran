@@ -2,7 +2,7 @@
 #include <assert.h>
 
 const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
-const char* majorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
+const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
 
 int numberOfMajorColors = sizeof(majorColor) / sizeof(majorColor[0]);
 int numberOfMinorColors = sizeof(majorColor) / sizeof(majorColor[0]);
@@ -14,8 +14,8 @@ typedef struct {
 
 ColorPair GetColorFromPairNumber(int pairNumber) {
     ColorPair colorPair;
-    colorPair.majorColor = MajorColorNames[(pairNumber / numberOfMinorColors)];
-    colorPair.minorColor = MinorColorNames[(pairNumber % numberOfMinorColors)];
+    colorPair.majorColor = majorColor[(pairNumber / numberOfMinorColors)];
+    colorPair.minorColor = minorColor[(pairNumber % numberOfMinorColors)];
     return colorPair;
 }
 
