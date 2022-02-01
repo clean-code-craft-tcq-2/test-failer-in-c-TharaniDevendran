@@ -35,7 +35,7 @@ void formatColorPrinter(ColorPair colorpair)
 {
     printf("%d | %s | %s\n", colorpair.pairNumber, colorpair.majorColor, colorpair.minorColor);
 }
-int printColorMap(*(ToformatColorPrinter)(ColorPair))
+int printColorMap(void (*ToformatColorPrinter)(ColorPair))
 {
     int i = 0, j = 0;
     for(i = 0; i < 5; i++) 
