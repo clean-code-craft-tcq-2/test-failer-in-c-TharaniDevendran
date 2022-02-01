@@ -32,13 +32,22 @@ void alertInCelcius(float farenheit, int (*ToNetworkAlertStub)(float), float (*T
     }
 }
 
+void VerifyalertInCelcius(float inputfarenheit, int expectedFailCount) {
+    alertInCelcius(inputfarenheit,&networkAlertStub, &ConvertFarenheitToCelcius);
+    assert(alertFailureCount == expectedFailCount);
+}
+
+void VerifyConvertFarenheitToCelcius(float inputfarenheit, float expectedCelsius) {
+    assert(ConvertFarenheitToCelcius(inputfarenheit) == expectedCelsius);
+}
+
 int main() 
 {
-    alertInCelcius(400.5, &networkAlertStub, &ConvertFarenheitToCelcius);
-    assert(alertFailureCount == 1);
-    
-    alertInCelcius(303.6, &networkAlertStub, &ConvertFarenheitToCelcius);
-    assert(alertFailureCount == 1);
+    VerifyConvertFarenheitToCelcius(400.5, 204.722222f);
+    VerifyalertInCelcius(400.5, 1);
+
+    VerifyConvertFarenheitToCelcius(303.6, 150.888889f)
+    VerifyalertInCelcius(303.6, 1);
     
     printf("%d alerts failed.\n", alertFailureCount);
     printf("All is well \n");
