@@ -1,17 +1,17 @@
 #include <stdio.h>
 #include <assert.h>
 
-char Shirtsize(int cms) {
+char Shirtsize(int SizeInCms) {
     char sizeName = '\0';
-    if(cms >= 36 && cms < 38) 
+    if(SizeInCms >= 36 && SizeInCms < 38) 
     {
         sizeName = 'S';
     } 
-    else if(cms >= 38 && cms <= 42) 
+    else if(SizeInCms >= 38 && SizeInCms <= 42) 
     {
         sizeName = 'M';
     } 
-    else if(cms > 42 && cms<=44) 
+    else if(SizeInCms > 42 && SizeInCms<=44) 
     {
         sizeName = 'L';
     }
