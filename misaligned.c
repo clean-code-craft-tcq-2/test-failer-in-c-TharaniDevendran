@@ -23,19 +23,19 @@ ColorPair GetColorFromPairNumber(int PairNumber) {
 
 void VerifyColorMapForPairNumber(int expectedpairNumber)
 {
-    int expectedmajorcolor_i = (pairNumber-1)/5;
-	int expectedminorcolor_j = (pairNumber-1)%5;
+    int expectedmajorcolor_i = (expectedpairNumber-1)/5;
+	int expectedminorcolor_j = (expectedpairNumber-1)%5;
     ColorPair TestcolorPair = GetColorFromPairNumber(pairNumber);
-    asser(TestcolorPair.pairNumber == expectedpairNumber);
+    assert(TestcolorPair.pairNumber == expectedpairNumber);
     assert(TestcolorPair.majorColor == majorColor[expectedmajorcolor_i]);
     assert(TestcolorPair.minorColor == minorColor[expectedminorcolor_j]);
 }
 
-void formatColorPrinter(Colorpair colorpair)
+void formatColorPrinter(ColorPair colorpair)
 {
     printf("%d | %s | %s\n", colorpair.pairNumber, colorpair.majorColor, colorpair.minorColor);
 }
-int printColorMap(*ToformatColorPrinter(Colorpair))
+int printColorMap(*ToformatColorPrinter(ColorPair))
 {
     int i = 0, j = 0;
     for(i = 0; i < 5; i++) 
