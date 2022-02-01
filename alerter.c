@@ -19,9 +19,9 @@ float ConvertFarenheitToCelcius(float farenheit)
 	return (farenheit - 32) * 5 / 9;
 }
 
-void alertInCelcius(float farenheit, int (*ToNetworkAlertStub)(float))
+void alertInCelcius(float farenheit, int (*ToNetworkAlertStub)(float), float (*ToConvertFarenheitToCelcius) (float))
 {
-    float celcius = ConvertFarenheitToCelcius(farenheit);
+    float celcius = ToConvertFarenheitToCelcius(farenheit);
     int returnCode = ToNetworkAlertStub(celcius);
     if (returnCode != 200) {
         // non-ok response is not an error! Issues happen in life!
@@ -34,10 +34,10 @@ void alertInCelcius(float farenheit, int (*ToNetworkAlertStub)(float))
 
 int main() 
 {
-	alertInCelcius(400.5, &networkAlertStub);
+    alertInCelcius(400.5, &networkAlertStub, &ConvertFarenheitToCelcius);
     assert(alertFailureCount == 1);
     
-    alertInCelcius(303.6, &networkAlertStub);
+    alertInCelcius(303.6, &networkAlertStub, &ConvertFarenheitToCelcius));
     assert(alertFailureCount == 1);
     
     printf("%d alerts failed.\n", alertFailureCount);
