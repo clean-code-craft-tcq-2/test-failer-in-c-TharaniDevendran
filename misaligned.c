@@ -17,15 +17,18 @@ ColorPair GetColorFromPairNumber(int PairNumber) {
     ColorPair colorPair;
     colorPair.majorColor = majorColor[(PairNumber / numberOfMinorColors)];
     colorPair.minorColor = minorColor[(PairNumber % numberOfMinorColors)];
-    colorPair.pairnumber = PairNumber;
+    colorPair.pairNumber = PairNumber;
     return colorPair;
 }
 
-void VerifyColorMapForPairNumber(int pairNumber)
+void VerifyColorMapForPairNumber(int expectedpairNumber)
 {
-    ColorPair colorPair = GetColorFromPairNumber(pairNumber);
-    assert(colorPair.majorColor == expectedMajor);
-    assert(colorPair.minorColor == expectedMinor);
+    int expectedmajorcolor_i = (pairNumber-1)/5;
+	int expectedminorcolor_j = (pairNumber-1)%5;
+    ColorPair TestcolorPair = GetColorFromPairNumber(pairNumber);
+    asser(TestcolorPair.pairNumber == expectedpairNumber);
+    assert(TestcolorPair.majorColor == majorColor[expectedmajorcolor_i]);
+    assert(TestcolorPair.minorColor == minorColor[expectedminorcolor_j]);
 }
 
 void formatColorPrinter(Colorpair colorpair)
