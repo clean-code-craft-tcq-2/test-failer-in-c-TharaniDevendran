@@ -23,8 +23,8 @@ ColorPair GetColorFromPairNumber(int PairNumber) {
 
 void VerifyColorMapForPairNumber(int expectedpairNumber)
 {
-    int expectedmajorcolor_i = (expectedpairNumber-1)/5;
-    int expectedminorcolor_j = (expectedpairNumber-1)%5;
+    int expectedmajorcolor_i = (expectedpairNumber)/5;
+    int expectedminorcolor_j = (expectedpairNumber)%5;
     ColorPair TestcolorPair = GetColorFromPairNumber(expectedpairNumber);
     assert(TestcolorPair.pairNumber == expectedpairNumber);
     assert(TestcolorPair.majorColor == majorColor[expectedmajorcolor_i]);
@@ -50,9 +50,12 @@ int printColorMap(void (*ToformatColorPrinter)(ColorPair))
 int main() {
     int result = printColorMap(&formatColorPrinter);
     assert(result == 25);
-    for(int i = 0; i < 25; i++) 
+    int i = 0, j = 0;
+    for(i = 0; i < 5; i++) 
     {
-	     VerifyColorMapForPairNumber(i);
+        for(j = 0; j < 5; j++) {
+            VerifyColorMapForPairNumber(i * 5 + j);
+        }
     }
     printf("All is well (maybe!)\n");
     return 0;
