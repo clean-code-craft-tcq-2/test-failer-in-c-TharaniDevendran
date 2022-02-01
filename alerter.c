@@ -46,7 +46,7 @@ int main()
     VerifyConvertFarenheitToCelcius(400.5, 204.722222f);
     VerifyalertInCelcius(400.5, 1);
 
-    VerifyConvertFarenheitToCelcius(303.6, 150.888889f)
+    VerifyConvertFarenheitToCelcius(303.6, 150.888889f);
     VerifyalertInCelcius(303.6, 1);
     
     printf("%d alerts failed.\n", alertFailureCount);
