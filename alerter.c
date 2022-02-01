@@ -37,7 +37,7 @@ int main()
     alertInCelcius(400.5, &networkAlertStub, &ConvertFarenheitToCelcius);
     assert(alertFailureCount == 1);
     
-    alertInCelcius(303.6, &networkAlertStub, &ConvertFarenheitToCelcius));
+    alertInCelcius(303.6, &networkAlertStub, &ConvertFarenheitToCelcius);
     assert(alertFailureCount == 1);
     
     printf("%d alerts failed.\n", alertFailureCount);
